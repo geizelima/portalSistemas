@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Sistemas de Saúde</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a65a;
+            --bg-color: #f4f7fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), #007bff);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .info-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .info-card p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05em;
+        }
+
+        .benefits-list li::before {
+            content: '✔';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .system-link {
+            display: block;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 25px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .system-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background-color: #fcfcfc;
+        }
+
+        .system-link h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+
+        .system-link p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            border-left: 6px solid #ffeeba;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .container { padding: 10px; margin: 20px auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>DIGITAR É CUIDAR.<br>REGISTRAR É SALVAR VIDAS.</h1>
+    </div>
+
+    <div class="info-card">
+        <h2>A importância da digitação dos atendimentos</h2>
+        <p>Cada informação registrada nos sistemas de saúde representa uma pessoa, uma família e uma oportunidade de oferecer um atendimento mais rápido, seguro e de qualidade.</p>
+        
+        <p><strong>A digitação correta e realizada no momento do atendimento permite:</strong></p>
+        <ul class="benefits-list">
+            <li>Atualização imediata do histórico do paciente;</li>
+            <li>Continuidade da assistência pela equipe de saúde;</li>
+            <li>Monitoramento de doenças e agravos;</li>
+            <li>Planejamento das ações da Secretaria Municipal de Saúde;</li>
+            <li>Envio de informações aos sistemas do Ministério da Saúde;</li>
+            <li>Produção de indicadores utilizados para financiamento do município;</li>
+            <li>Maior segurança e rastreabilidade das informações.</li>
+        </ul>
+    </div>
+
+    <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">Sistemas de Informação do Município</h2>
+
+    <div class="systems-grid">
+        <a href="https://espinosa.infosusonline.com.br/" target="_blank" class="system-link">
+            <h3>e-SUS PEC</h3>
+            <p>Prontuário Eletrônico do Cidadão</p>
+        </a>
+
+        <a href="https://notificasinan-7bac6.web.app" target="_blank" class="system-link" style="border-top-color: #ff9800;">
+            <h3>Notificações (SINAN)</h3>
+            <p>Dengue, Chikungunya, Antirrábico, Peçonhentos</p>
+        </a>
+
+        <a href="https://notifica.saude.gov.br/" target="_blank" class="system-link" style="border-top-color: #e91e63;">
+            <h3>e-SUS Notifica</h3>
+            <p>Chagas, COVID-19 e outras notificações</p>
+        </a>
+
+        <a href="https://siscan.saude.gov.br/login.jsf" target="_blank" class="system-link" style="border-top-color: var(--secondary-color);">
+            <h3>SISCAN</h3>
+            <p>Sistemas de Prevenção e Rastreamento</p>
+        </a>
+    </div>
+
+    <div class="alert-box">
+        Lembre-se:<br>
+        Se não foi digitado, para os sistemas de informação aquele atendimento não aconteceu.
+    </div>
+</div>
+
+</body>
+</html>
