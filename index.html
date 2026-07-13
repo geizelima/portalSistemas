@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Sistemas de Saúde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue:       #0B4F9E;
+            --blue-mid:   #1A6FC4;
+            --blue-light: #E8F1FB;
+            --green:      #0E7C4A;
+            --green-light:#E6F5EE;
+            --amber:      #C97F00;
+            --amber-light:#FFF8E1;
+            --rose:       #C0294E;
+            --rose-light: #FDE8EE;
+            --teal:       #0D7A74;
+            --teal-light: #E3F5F4;
+            --purple:     #5B3FC8;
+            --purple-light:#EEEBFA;
+            --orange:     #D14F00;
+            --orange-light:#FDEEE6;
+
+            --bg:         #F0F4FA;
+            --card:       #FFFFFF;
+            --text:       #1C2333;
+            --text-muted: #5A6478;
+            --border:     #DDE3EE;
+            --radius:     14px;
+            --radius-sm:  8px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(140deg, #0B4F9E 0%, #1873CC 55%, #0E7C4A 100%);
+            color: #fff;
+            padding: 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            max-width: 640px;
+            margin: 0 auto 16px;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.88;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        /* ── INFO CARD ── */
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 36px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .info-card h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.2rem;
+            color: var(--blue);
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--blue-light);
+        }
+
+        .info-card > p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 18px;
+        }
+
+        .info-card strong { color: var(--text); }
+
+        .benefits-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            background: var(--blue-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .benefits-list li .icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.65rem;
+            margin-top: 1px;
+        }
+
+        /* ── SECTION HEADER ── */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            color: var(--blue);
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        /* ── GROUP LABEL ── */
+        .group-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 32px 0 12px;
+        }
+
+        /* ── SYSTEMS GRID ── */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 16px;
+        }
+
+        .system-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--accent, var(--blue));
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .system-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+            border-color: transparent;
+        }
+
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 100px;
+            background: var(--badge-bg, var(--blue-light));
+            color: var(--badge-color, var(--blue));
+            width: fit-content;
+        }
+
+        .card-badge .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .system-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .system-card p {
+            font-size: 0.87rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .card-arrow {
+            margin-top: auto;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent, var(--blue));
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Color variants */
+        .v-blue   { --accent: var(--blue);   --badge-bg: var(--blue-light);   --badge-color: var(--blue); }
+        .v-orange { --accent: var(--orange);  --badge-bg: var(--orange-light); --badge-color: var(--orange); }
+        .v-rose   { --accent: var(--rose);    --badge-bg: var(--rose-light);   --badge-color: var(--rose); }
+        .v-green  { --accent: var(--green);   --badge-bg: var(--green-light);  --badge-color: var(--green); }
+        .v-teal   { --accent: var(--teal);    --badge-bg: var(--teal-light);   --badge-color: var(--teal); }
+        .v-purple { --accent: var(--purple);  --badge-bg: var(--purple-light); --badge-color: var(--purple); }
+        .v-amber  { --accent: var(--amber);   --badge-bg: var(--amber-light);  --badge-color: var(--amber); }
+
+        /* ── ALERT ── */
+        .alert {
+            background: var(--amber-light);
+            border: 1px solid #F5D27A;
+            border-left: 6px solid var(--amber);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .alert-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .alert-body strong {
+            display: block;
+            font-size: 0.98rem;
+            color: var(--amber);
+            margin-bottom: 4px;
+        }
+
+        .alert-body p {
+            font-size: 0.9rem;
+            color: #6B4E00;
+            line-height: 1.5;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 40px 16px 36px; }
+            .info-card { padding: 22px 18px; }
+            .benefits-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <span class="hero-eyebrow">Secretaria Municipal de Saúde · Espinosa/MG</span>
+    <h1>Digitar é cuidar.<br>Registrar é salvar vidas.</h1>
+    <p>Cada atendimento registrado representa um cidadão melhor assistido e um município mais bem financiado.</p>
+</div>
+
+<div class="container">
+
+    <!-- INFO -->
+    <div class="info-card">
+        <h2>Por que o registro correto é essencial?</h2>
+        <p>Cada informação lançada nos sistemas de saúde representa uma pessoa, uma família e uma oportunidade de oferecer atendimento mais rápido, seguro e de qualidade.</p>
+        <p><strong>A digitação correta e realizada no momento do atendimento garante:</strong></p>
+        <ul class="benefits-list">
+            <li><span class="icon">✓</span> Histórico do paciente sempre atualizado</li>
+            <li><span class="icon">✓</span> Continuidade da assistência pela equipe</li>
+            <li><span class="icon">✓</span> Monitoramento de doenças e agravos</li>
+            <li><span class="icon">✓</span> Planejamento das ações da SMS</li>
+            <li><span class="icon">✓</span> Envio de dados ao Ministério da Saúde</li>
+            <li><span class="icon">✓</span> Indicadores para financiamento municipal</li>
+            <li><span class="icon">✓</span> Segurança e rastreabilidade das informações</li>
+        </ul>
+    </div>
+
+    <!-- SYSTEMS -->
+    <div class="section-header">
+        <h2>Sistemas de Informação do Município</h2>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Grupo 1: Atenção Primária -->
+    <p class="group-label">Atenção Primária e Vigilância Epidemiológica</p>
+    <div class="systems-grid">
+
+        <a href="https://espinosa.infosusonline.com.br/" target="_blank" class="system-card v-blue">
+            <span class="card-badge"><span class="dot"></span>Prontuário</span>
+            <h3>e-SUS PEC</h3>
+            <p>Prontuário Eletrônico do Cidadão — registro de consultas, visitas domiciliares e acompanhamentos da APS.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+        <a href="https://notificasinan-7bac6.web.app" target="_blank" class="system-card v-orange">
+            <span class="card-badge"><span class="dot"></span>Notificação</span>
+            <h3>Notificações (SINAN)</h3>
+            <p>Dengue, Chikungunya, Antirrábico e Animais Peçonhentos — sistema local de notificação compulsória.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+        <a href="https://notifica.saude.gov.br/" target="_blank" class="system-card v-rose">
+            <span class="card-badge"><span class="dot"></span>Notificação</span>
+            <h3>e-SUS Notifica</h3>
+            <p>Notificação de Chagas, COVID-19 e outros agravos de interesse nacional junto ao Ministério da Saúde.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+        <a href="https://siscan.saude.gov.br/login.jsf" target="_blank" class="system-card v-green">
+            <span class="card-badge"><span class="dot"></span>Rastreamento</span>
+            <h3>SISCAN</h3>
+            <p>Sistema de Informação do Câncer — rastreamento e prevenção de câncer de colo uterino e mama.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+        <a href="https://si-pni.saude.gov.br/#/login" target="_blank" class="system-card v-teal">
+            <span class="card-badge"><span class="dot"></span>Imunização</span>
+            <h3>SIPNI</h3>
+            <p>Sistema de Informação do Programa Nacional de Imunizações — registro e controle de vacinas aplicadas.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a> 
+        <a href="https://siaps.saude.gov.br/" target="_blank" class="system-card v-rose">
+            <span class="card-badge"><span class="dot"></span>Relatórios</span>
+            <h3>SIAPS</h3>
+            <p>Sistema de Informação para a Atenção Primária à Saúde.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+         <a href="https://sisab.saude.gov.br/" target="_blank" class="system-card v-teal">
+            <span class="card-badge"><span class="dot"></span>Relatórios</span>
+            <h3>SISAB</h3>
+            <p>Sistema de Informação para a Atenção Primária à Saúde.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+        <a href="https://espinosa.infosus.net.br/" target="_blank" class="system-card v-blue">
+            <span class="card-badge"><span class="dot"></span>REGULAÇÃO</span>
+            <h3>REGULAÇÃO</h3>
+            <p>Sistema de Regulação Municipal.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+         <a href="https://esussiaps.vercel.app/" target="_blank" class="system-card v-orange">
+            <span class="card-badge"><span class="dot"></span>CRUZAMENTO DE DADOS</span>
+            <h3>Cruzamento de dados SIAPS vs e-SUS APS</h3>
+            <p>Cruzamento de Planilhas esus x siaps.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+    </div>
+
+    <!-- Grupo 2: Cadastro e Acesso -->
+    <p class="group-label">Cadastro, Identificação e Acesso</p>
+    <div class="systems-grid">
+
+        <a href="https://cadastro.saude.gov.br/segcartao/" target="_blank" class="system-card v-purple">
+            <span class="card-badge"><span class="dot"></span>Identificação</span>
+            <h3>Cartão SUS</h3>
+            <p>Cadastro e segunda via do Cartão Nacional de Saúde (CNS) — identificação única do cidadão no SUS.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+        <a href="https://acesso.saude.gov.br/" target="_blank" class="system-card v-amber">
+            <span class="card-badge"><span class="dot"></span>Acesso</span>
+            <h3>SCPA</h3>
+            <p>Sistema de Cadastro e Permissão de Acesso — gerenciamento de usuários e permissões nos sistemas do Ministério da Saúde.</p>
+            <span class="card-arrow">Acessar →</span>
+        </a>
+
+    </div>
+
+    <!-- ALERT -->
+    <div class="alert">
+        <span class="alert-icon">⚠️</span>
+        <div class="alert-body">
+            <strong>Atenção — Regra de Ouro do Registro</strong>
+            <p>Se não foi digitado, para os sistemas de informação aquele atendimento não aconteceu. Sem registro, não há indicador, não há financiamento e não há planejamento.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    Secretaria Municipal de Saúde · Espinosa/MG &nbsp;|&nbsp; Desenvolvido por Geize Lauton · Administração de Sistemas de Saúde
+</footer>
+
+</body>
+</html>
